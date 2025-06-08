@@ -1,375 +1,320 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- data-theme will be set by JS -->
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- EDIT THE TITLE & META DESCRIPTION BELOW -->
-    <title>Shubham Kumar Bind | Android Developer</title>
-    <meta name="description" content="The portfolio of Shubham Kumar Bind, a skilled Android Developer specializing in creating modern, user-centric mobile applications with Kotlin and Jetpack Compose.">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+    <title>AWS Cloud Practitioner Flashcards</title>
     <style>
-        /*
-        ========================================
-        MATERIAL 3 INSPIRED THEME - FINAL VERSION
-        ========================================
-        */
+        /* --- Basic Styling --- */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-        /* 1. COLOR PALETTES (Tonal Colors) */
-        :root {
-            /* Shared values */
-            --border-radius-small: 8px;
-            --border-radius-medium: 12px;
-            --border-radius-large: 16px;
-            --border-radius-full: 999px;
-            --transition-speed: 0.3s;
-        }
-
-        /* Light Theme */
-        html[data-theme='light'] {
-            --primary: #00668B;
-            --on-primary: #FFFFFF;
-            --primary-container: #C3E8FF;
-            --on-primary-container: #001E2C;
-            --secondary: #4E616D;
-            --on-secondary: #FFFFFF;
-            --secondary-container: #D1E5F4;
-            --on-secondary-container: #091E28;
-            --surface: #F8FDFF;
-            --on-surface: #191C1E;
-            --surface-variant: #DDE3EA;
-            --on-surface-variant: #41484D;
-            --outline: #71787E;
-            --background: #F8FDFF;
-            --on-background: #191C1E;
-            --elevation-1: 0 1px 2px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.1);
-            --elevation-2: 0 2px 4px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.1);
-        }
-
-        /* Dark Theme */
-        html[data-theme='dark'] {
-            --primary: #79D1FF;
-            --on-primary: #00354A;
-            --primary-container: #004D69;
-            --on-primary-container: #C3E8FF;
-            --secondary: #B5C9D7;
-            --on-secondary: #20333E;
-            --secondary-container: #364955;
-            --on-secondary-container: #D1E5F4;
-            --surface: #101416;
-            --on-surface: #E0E3E6;
-            --surface-variant: #41484D;
-            --on-surface-variant: #C1C7CE;
-            --outline: #8B9298;
-            --background: #191C1E;
-            --on-background: #E0E3E6;
-            --elevation-1: 0 1px 2px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.3);
-            --elevation-2: 0 2px 4px rgba(0,0,0,0.3), 0 2px 6px rgba(0,0,0,0.3);
-        }
-
-        /* 2. BASE STYLES & TYPOGRAPHY */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background);
-            color: var(--on-background);
-            line-height: 1.6;
-            transition: background-color var(--transition-speed), color var(--transition-speed);
-        }
-        h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; color: var(--on-surface); font-weight: 700; }
-        h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); letter-spacing: -0.5px; }
-        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 4rem; color: var(--primary); }
-        h3 { font-size: 1.25rem; color: var(--on-surface); }
-        h4 { font-size: 1.1rem; color: var(--on-surface-variant); font-weight: 500;}
-        a { color: var(--primary); text-decoration: none; }
-        .container { max-width: 1100px; margin: auto; padding: 0 2rem; }
-
-        /* 3. COMPONENTS */
-        .navbar {
-            position: fixed; width: 100%; top: 0; left: 0;
-            background-color: color-mix(in srgb, var(--surface) 80%, transparent);
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            z-index: 1000; padding: 1rem 0; border-bottom: 1px solid var(--outline);
-            transition: background-color var(--transition-speed);
-        }
-        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
-        .navbar .logo { font-size: 1.5rem; font-weight: 700; color: var(--on-surface); }
-        .navbar .logo span { color: var(--primary); }
-        .nav-links { list-style: none; display: flex; align-items: center; gap: 1.5rem; }
-        .nav-links a { color: var(--on-surface-variant); font-weight: 500; transition: color 0.3s ease; }
-        .nav-links a:hover { color: var(--primary); }
-        .theme-switch {
-            display: flex; align-items: center; background: var(--surface-variant);
-            border-radius: var(--border-radius-full); padding: 4px; cursor: pointer;
-        }
-        .theme-switch .icon { padding: 4px; color: var(--on-surface-variant); }
-        .theme-switch .switch-handle {
-            width: 24px; height: 24px; background: var(--primary);
-            border-radius: 50%; transition: transform var(--transition-speed) ease;
-        }
-        html[data-theme='dark'] .theme-switch .switch-handle { transform: translateX(32px); }
-
-        #hero {
-            min-height: 90vh; display: flex; align-items: center;
-            text-align: center; padding-top: 80px;
-        }
-        #hero .subtitle {
-            font-size: 1.25rem; color: var(--on-surface-variant);
-            margin: 1rem 0 2rem 0; max-width: 600px; margin-left: auto; margin-right: auto;
-        }
-        .btn {
-            display: inline-block; font-family: 'Poppins', sans-serif; font-weight: 500;
-            font-size: 1rem; padding: 12px 24px; border-radius: var(--border-radius-full);
-            border: 1px solid transparent; cursor: pointer; transition: all var(--transition-speed) ease;
-        }
-        .btn-filled { background-color: var(--primary); color: var(--on-primary); }
-        .btn-filled:hover { box-shadow: var(--elevation-1); filter: brightness(1.1); }
-        .btn-outlined { background-color: transparent; color: var(--primary); border-color: var(--outline); }
-        .btn-outlined:hover { background-color: color-mix(in srgb, var(--primary) 8%, transparent); }
-        
-        .fab {
-            position: fixed; bottom: 2rem; right: 2rem; width: 56px; height: 56px;
-            background-color: var(--primary-container); color: var(--on-primary-container);
-            border-radius: var(--border-radius-large); display: flex; justify-content: center;
-            align-items: center; font-size: 1.5rem; box-shadow: var(--elevation-2);
-            z-index: 999; transition: all var(--transition-speed) ease;
-        }
-        .fab:hover { transform: scale(1.05); box-shadow: 0 4px 8px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.2); }
-
-        section { padding: 5rem 0; }
-        
-        #about .about-content {
-            display: grid; grid-template-columns: 250px 1fr;
-            align-items: center; gap: 3rem;
-        }
-        #about .about-image {
-            width: 250px; height: 250px; border-radius: 50%;
-            object-fit: cover; border: 4px solid var(--outline);
+            font-family: 'Roboto', sans-serif;
+            background-color: #232F3E; /* AWS Dark Blue */
+            color: #FFFFFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
-        .card {
-            background-color: var(--surface); border: 1px solid var(--outline);
-            border-radius: var(--border-radius-medium);
-            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        h1 {
+            color: #FF9900; /* AWS Orange */
+            margin-bottom: 10px;
+            text-align: center;
         }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--elevation-1);
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* --- Flashcard Styling --- */
+        .flashcard-container {
+            perspective: 1000px; /* This creates the 3D space */
+            width: 90%;
+            max-width: 700px;
+            height: 400px;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+        }
+
+        .flashcard.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden; /* Hides the back of the element */
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .card-front {
+            background-color: #FFFFFF;
+            color: #232F3E;
+        }
+
+        .card-back {
+            background-color: #4A5B74; /* A lighter shade of AWS blue */
+            color: #FFFFFF;
+            transform: rotateY(180deg);
         }
         
-        #skills .skills-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
+        .card-content {
+            font-size: 1.5em;
+            font-weight: bold;
         }
-        .skill-card { text-align: center; padding: 1.5rem; }
-        .skill-card i { font-size: 3rem; color: var(--primary); margin-bottom: 1rem; }
         
-        .projects-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
+        .card-answer {
+             font-size: 1.2em;
+             line-height: 1.6;
         }
-        .project-card { display: flex; flex-direction: column; overflow: hidden; }
-        .project-card img {
-            width: 100%; height: 200px; object-fit: cover;
-            border-bottom: 1px solid var(--outline);
-        }
-        .project-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
-        .project-content p { color: var(--on-surface-variant); margin: 0.5rem 0 1rem 0; flex-grow: 1; }
-        .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .project-tags span {
-            background-color: var(--secondary-container); color: var(--on-secondary-container);
-            padding: 0.3rem 0.8rem; border-radius: var(--border-radius-small);
-            font-size: 0.8rem; font-weight: 500;
-        }
-        .project-links { margin-top: 1.5rem; display: flex; gap: 1rem;}
 
-        footer { text-align: center; padding: 3rem 0 2rem 0; margin-top: 4rem; border-top: 1px solid var(--outline); }
-        .social-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
-        .social-links a { font-size: 1.5rem; color: var(--on-surface-variant); transition: color 0.3s, transform 0.3s; }
-        .social-links a:hover { color: var(--primary); transform: translateY(-3px); }
+        /* --- Timer Styling --- */
+        .timer-container {
+            margin-top: 30px;
+            background-color: #4A5B74;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1.2em;
+        }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 2rem; }
-            .nav-links { display: none; }
-            #about .about-content { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
-            #about .about-image { margin: 0 auto; }
-            .fab { bottom: 1rem; right: 1rem; }
+        #timer {
+            font-weight: bold;
+            color: #FF9900;
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="container">
-            <a href="#hero" class="logo">Shubham<span>.</span></a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li>
-                    <div class="theme-switch" id="theme-toggle">
-                        <div class="icon"><i class="fa-solid fa-sun"></i></div>
-                        <div class="switch-handle"></div>
-                        <div class="icon"><i class="fa-solid fa-moon"></i></div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <h1>AWS Cloud Practitioner Custom Flashcards</h1>
+    <p>A new card will appear every 15 minutes. Click the card to reveal the answer!</p>
 
-    <!-- EDIT THIS: Replace with your email address -->
-    <a href="mailto:shubham.k.bind@email.com" class="fab" aria-label="Contact me">
-        <i class="fa-solid fa-envelope"></i>
-    </a>
-
-    <main>
-        <section id="hero">
-            <div class="container">
-                <h1>Shubham Kumar Bind</h1>
-                <p class="subtitle">A dedicated Android Developer crafting modern, user-centric mobile experiences with Kotlin.</p>
-                <a href="#projects" class="btn btn-filled">View My Work</a>
-                <a href="https://github.com/your-username" target="_blank" class="btn btn-outlined" style="margin-left: 1rem;">
-                    <!-- EDIT THIS: Replace with your GitHub username -->
-                    <i class="fa-brands fa-github"></i> GitHub
-                </a>
+    <div class="flashcard-container">
+        <div class="flashcard" id="flashcard">
+            <div class="card-face card-front">
+                <div class="card-content" id="question">Loading question...</div>
             </div>
-        </section>
+            <div class="card-face card-back">
+                <div class="card-answer" id="answer">Loading answer...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class.timer-container">
+        Next card in: <span id="timer">15:00</span>
+    </div>
+
+    <script>
+        // --- FLASHCARD DATA FROM YOUR PDF ---
+        const flashcards = [
+            // --- Module: Cloud Architecting ---
+            { question: "What is the best definition of cloud architecture?", answer: "Applying cloud characteristics to a solution that uses cloud services and features to meet technical and business requirements." },
+            { question: "The AWS Well-Architected Framework has SIX pillars (originally five). What are they?", answer: "Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, and Sustainability." },
+            { question: "Which actions are consistent with the operational excellence pillar of the AWS Well-Architected Framework? (Select TWO)", answer: "1. Review and improve processes and procedures on a continuous cycle. 2. Apply software engineering principles and methodology to infrastructure as code." },
+            { question: "An application has a frontend web tier and a backend application tier. Which design most closely follows AWS best practices?", answer: "Design the web tier to communicate with the application tier through the Elastic Load Balancing service." },
+            { question: "A solutions architect is developing a process for handling server failures. Which process most closely follows AWS best practices?", answer: "Amazon CloudWatch detects a system failure. It triggers automation to provision a new server." },
+            { question: "A company wants to change its website's functionality but is unsure what will happen. Which approach for making the change follows AWS best practices?", answer: "Provision a new server and make changes to it. Use DNS to gradually migrate users to the new server. Shut down the original server after all users migrate." },
+            { question: "A company stores read-only data in S3. Most users are in the same country, but some are located around the world. Which design decision most closely follows AWS best practices?", answer: "Use a bucket in the AWS Region closest to the company headquarters. All users access the data through Amazon CloudFront." },
+            { question: "A consultant needs temporary access to a large object in an S3 bucket for one day. Which method for granting access follows AWS best practices?", answer: "Create a presigned URL to the object that expires in 24 hours, and give it to the consultant." },
+            { question: "What are the main considerations that influence which AWS Regions to use? (Select TWO)", answer: "1. Latency reduction for end users. 2. Compliance with laws and regulations." },
+            { question: "What are the main considerations that influence which Availability Zones to use? (Select TWO)", answer: "1. Protection against localized natural disasters. 2. Application resiliency during system failures." },
+            
+            // --- Module: Shared Responsibility & IAM ---
+            { question: "What are the two main components of the AWS Shared Responsibility Model?", answer: "Customer Responsibilities (Security IN the Cloud) and AWS Responsibilities (Security OF the Cloud)." },
+            { question: "What are the design principles of the Security Pillar? (Name at least three)", answer: "Strong Identity Foundation, Protect Data in Transit and at Rest, Security at All Layers, Minimize Direct Data Access, Maintain Traceability, Prepare for Security Events, Automate Security Best Practices." },
+            { question: "What is the best practice for secure access regarding permissions?", answer: "Principle of Least Privilege: Assign minimum permissions necessary for users." },
+            { question: "What are the key differences between an IAM User, Group, and Role?", answer: "User: An individual with permanent credentials. Group: A collection of users with identical permissions. Role: An identity with temporary permissions for specific tasks." },
+            
+            // --- Module: S3 Storage ---
+            { question: "For which use case does Amazon S3 provide a good solution?", answer: "An internet-accessible storage location for video files that an external website accesses." },
+            { question: "A company wants to use S3 to host a static website. Which types of content does S3 support for this? (Select THREE)", answer: "1. HTML files and image files. 2. Client-side scripts. 3. Video and sound files." },
+            { question: "Which scenarios represent a good use for Amazon S3? (Select TWO)", answer: "1. Backing up critical data. 2. Storing computation and analytics data." },
+            { question: "A company wants to use an S3 bucket to store sensitive data. Which actions can they take to protect it? (Select TWO)", answer: "1. Enabling server-side encryption on the S3 bucket before uploading sensitive data. 2. Using client-side encryption to protect data in transit." },
+            { question: "A company must create a common place to store shared files. Which requirements does S3 support? (Select TWO)", answer: "1. Recover deleted files (with versioning). 2. Maintain different versions of files." },
+            { question: "A customer service team accesses case data daily for 30 days. Cases can be reopened and require immediate access for 1 year. Which solution is most cost-efficient?", answer: "Store case data in S3 Intelligent-Tiering to automatically move data between tiers based on access frequency." },
+            { question: "Which Amazon S3 unaccelerated data transfers have an associated cost? (Select TWO)", answer: "1. OUT to the internet. 2. OUT to other AWS Regions." },
+            { question: "A company is migrating 100 TB of data from on-premises to S3 over a 155 Mbps internet connection. Which data transfer option is fastest and most cost-effective?", answer: "AWS Snowball." },
+            { question: "A video producer must regularly transfer several video files (100-700 MB) to S3. The internet connection is unreliable. Which solution is fastest, most reliable, and most cost-effective?", answer: "Amazon S3 multipart uploads." },
+            { question: "Which qualities vary by AWS Region? (Select TWO)", answer: "1. Cost-effectiveness of workloads. 2. Service and feature availability." },
+
+            // --- Module: EC2 Compute ---
+            { question: "What are reasons to choose Amazon EC2? (Select TWO)", answer: "1. Ability to run any type of workload. 2. Complete control of computing resources." },
+            { question: "What are the benefits of using an Amazon Machine Image (AMI)? (Select THREE)", answer: "1. Selling or sharing software solutions packaged as an AMI. 2. Using an AMI as a server backup for EC2 instances. 3. Launching instances with the same configuration." },
+            { question: "A system administrator must change the instance type of multiple running EC2 instances (EBS-backed and instance store-backed). Which method is a valid way to change the instance type?", answer: "Stop an Amazon EBS-backed instance, change its instance type, and start the instance." },
+            { question: "A workload requires high read/write access to large local datasets. Which instance types would perform best? (Select TWO)", answer: "1. Memory optimized. 2. Storage optimized." },
+            { question: "An application requires the MAC address of the host EC2 instance. The architecture uses an Auto Scaling group. What is the best way to obtain the MAC address?", answer: "Use the user data of each instance to access the MAC address through the instance metadata." },
+            { question: "A transactional workload on an EC2 instance performs high amounts of frequent read and write operations. Which Amazon EBS volume type is best?", answer: "Provisioned IOPS solid state drive (SSD)." },
+            { question: "It is possible to create an NFS share on an Amazon EBS-backed Linux instance. What advantages does Amazon EFS provide compared to this solution? (Select TWO)", answer: "1. Automatic scaling. 2. High availability." },
+            { question: "Which feature does Amazon FSx for Windows File Server provide?", answer: "Fully managed Windows file servers." },
+            { question: "Which descriptions of Amazon EC2 pricing options are correct? (Select TWO)", answer: "1. On-Demand Instances enable you to pay for compute capacity by usage time, with no long-term commitments. 2. Spot Instances offer spare compute capacity at discounted prices, and can be interrupted." },
+            { question: "A company has three high-performance computing instances that must communicate with each other with maximum network performance. Which placement strategy should they use?", answer: "Cluster. (Note: The provided answer key showed 'Spread' but 'Cluster' is the correct strategy for low-latency, high-bandwidth communication between instances)." },
+
+            // --- Module: Databases ---
+            { question: "Which use cases indicate that a non-relational database might be a better solution than a relational database? (Select TWO)", answer: "1. Horizontal scaling for massive data volume. 2. Data with unpredictable attributes." },
+            { question: "Which statement is true when comparing a database on AWS (managed) with a database on an EC2 instance?", answer: "AWS manages DB patches for a database on a managed database service." },
+            { question: "What are good use cases for Amazon RDS? (Select THREE)", answer: "1. An application that requires the database to enforce syntax rules. 2. An application that requires complex joins of data. 3. Running a Microsoft SQL Server in AWS." },
+            { question: "A company is deciding which service to use for an online enrollment system. The choices are MySQL on EC2, RDS, and DynamoDB. Which use cases suggest using RDS? (Select THREE)", answer: "1. The data is highly structured. 2. Student, course, and registration data are stored in many different tables. 3. The company doesn’t want to manage database patches." },
+            { question: "What are good use cases for Amazon DynamoDB? (Select THREE)", answer: "1. Database for serverless architectures. 2. Applications that require ACID transactions. 3. Document database for JSON-based documents." },
+            { question: "A small game company is designing an online game. Which use cases suggest that DynamoDB might be a better solution than a MySQL database? (Select TWO)", answer: "1. Unpredictable attributes for player-created objects. 2. Large number of player-created objects, each with different attributes." },
+            { question: "Which techniques should you use to secure an Amazon RDS database? (Select THREE)", answer: "1. Security groups to control network access to individual instances. 2. An Amazon VPC gateway endpoint to prevent traffic from traversing the internet. 3. A virtual private cloud (VPC) to provide instance isolation and firewall." },
+            { question: "Which techniques should you use to secure Amazon DynamoDB? (Select THREE)", answer: "1. Encryption to protect sensitive data. 2. AWS IAM policies to define access at the table, item, or attribute level. 3. An Amazon VPC gateway endpoint to prevent traffic from traversing the internet." },
+            { question: "A company wants to migrate their on-premises Oracle database to Amazon Aurora MySQL. What process describes the high-level steps?", answer: "Use AWS Schema Conversion Tool to convert the schema, and then use AWS Database Migration Service (AWS DMS) to migrate the data." },
+            { question: "You must perform a heterogeneous migration from an on-premises facility to a database in a VPC using AWS Snowball Edge and DMS. At which point do you use AWS SCT?", answer: "At the start, to extract data from the source database into the Snowball Edge, before shipping the device." },
+            
+            // --- Module: VPC Networking ---
+            { question: "Which definition describes a virtual private cloud (VPC)?", answer: "A logically isolated virtual network that you define in the AWS Cloud." },
+            { question: "What are best practices for designing a VPC? (Select THREE)", answer: "1. Divide the VPC network range evenly across all Availability Zones available. 2. Create one subnet per Availability Zone for each group of hosts that have unique routing requirements. 3. Reserve some address space for future use." },
+            { question: "A company wants to run a highly available web tier using two EC2 instances and a load balancer. Which design provides the highest availability?", answer: "Two different subnets, one per Availability Zone. Each subnet contains one EC2 instance." },
+            { question: "Which combination of actions enables direct internet access for IPv4 hosts in a VPC? (Select THREE)", answer: "1. Configuring hosts to have or obtain an internet-routable address. 2. Configuring security groups and network access control lists to permit internet traffic. 3. Creating a route for 0.0.0.0/0 that points to the internet gateway." },
+            { question: "A group of consultants requires access to an EC2 instance from the internet for 3 consecutive days each week. How should you assign an IPv4 address to the instance?", answer: "Associate an Elastic IP address with the EC2 instance." },
+            { question: "Several EC2 instances in a VPC have internet access but should not be accessible from the internet. They must be able to download updates. How should they launch?", answer: "Without public IP addresses, in a subnet with a default route to a network address translation (NAT) gateway." },
+            { question: "You are configuring a bastion host to access EC2 instances in a private subnet. What must you do to the security groups? (Select TWO)", answer: "1. Add a rule to the bastion host to allow traffic from your source IP address. 2. Add a rule to the private subnet EC2 instances to allow traffic from the bastion host security group." },
+            { question: "You have a VPC with a public subnet and a secure subnet. How can you control traffic with a network ACL?", answer: "Add rules to the subnet custom network ACL to allow traffic from and to allowed internet addresses." },
+            { question: "How can you modify security groups or network ACLs to deny traffic to and from several restricted addresses?", answer: "In the network ACL, deny traffic to and from the restricted addresses." },
+            
+            // --- Module: Scaling and High Availability ---
+            { question: "Which statement about Amazon EC2 Auto Scaling is accurate?", answer: "It can launch Amazon EC2 instances in multiple Availability Zones." },
+            { question: "You detected that the demand on a fleet of EC2 instances increases by a set amount each day. Which type of scaling is most appropriate?", answer: "Scheduled." },
+            { question: "A fleet of EC2 instances must maintain 50 percent average CPU utilization. What is the simplest way to achieve this?", answer: "Target tracking scaling." },
+            { question: "How do you vertically scale an Amazon RDS database?", answer: "By changing the instance class." },
+            { question: "How do you horizontally scale an Amazon Aurora database?", answer: "By adding Aurora Replica instances." },
+            { question: "How does Amazon DynamoDB perform automatic scaling?", answer: "It adjusts the provisioned throughput capacity in response to traffic patterns." },
+            { question: "A fleet of EC2 instances runs an application with a custom protocol on TCP port 42000. Which load balancing solution ensures the highest availability?", answer: "Network Load Balancer." },
+            { question: "Users in location A connect to an application in Region A. Users in location B connect to the same application in Region B. If Region A becomes unhealthy, clients in location A must be redirected to Region B. What solution meets this requirement?", answer: "Use geolocation routing with failover records in Amazon Route 53." },
+            { question: "A company must build a highly available website that uses server-side scripts to serve dynamic HTML. Which solution provides the highest availability for the least cost and complexity?", answer: "An Auto Scaling group launches EC2 instances, which are served by an Application Load Balancer. DNS name resolution points to the load balancer." },
+            { question: "You have a new AWS account for development and want to stay within the AWS Free Tier. Which approach will work and requires the least effort?", answer: "Create an Amazon CloudWatch alarm to send you an email message when the account billing exceeds $0." },
+
+            // --- Module: Automation (CloudFormation) ---
+            { question: "What are reasons to use automation to provision resources? (Select TWO)", answer: "1. Lack of version control with manual processes. 2. Alignment with the reliability design principle." },
+            { question: "What are benefits of using infrastructure as code (IaC) over manual processes? (Select TWO)", answer: "1. Deploy environments with configuration consistency. 2. Propagate updates from a single environment to all environments." },
+            { question: "A cloud architect wants to quickly set up a secure implementation of Amazon FSx for Windows File Server that follows AWS best practices. Which solution should they use?", answer: "An AWS Quick Start." },
+            { question: "What is Amazon Q Developer?", answer: "An artificial intelligence (AI)-powered coding companion." },
+            { question: "Which are reasons to use Amazon Q Developer? (Select TWO)", answer: "1. Enhance application security. 2. Accelerate coding tasks." },
+            { question: "What is AWS CloudFormation?", answer: "An AWS service that you can use to create, model, and manage AWS resources." },
+            { question: "What is AWS CloudFormation Designer?", answer: "A graphical design interface for creating AWS CloudFormation templates." },
+            { question: "Which option can be used to accomplish deployment-specific differences in an AWS CloudFormation template?", answer: "Use conditions." },
+            { question: "Which option is a good way to preview changes before implementing them in AWS CloudFormation Designer?", answer: "Create a change set." },
+            { question: "Which option is a good way to know which resources in an application environment were manually modified if the environment was created by running an AWS CloudFormation stack?", answer: "Run drift detection on the stack." },
+            
+            // --- Module: Caching (CloudFront & ElastiCache) ---
+            { question: "What is caching?", answer: "A cache is a high-speed data layer for storing frequently accessed data." },
+            { question: "Which type of data should you cache?", answer: "Static data that is frequently accessed." },
+            { question: "What is a primary benefit of caching?", answer: "Reduced response latency." },
+            { question: "What types of content on a web page can be cached using an edge cache? (Select TWO)", answer: "1. Web objects, such as hyperlinks. 2. Video files, such as a product demo." },
+            { question: "What does Amazon CloudFront enable?", answer: "Multi-tiered and regional caching of content." },
+            { question: "How does Amazon CloudFront use edge locations?", answer: "It caches frequently accessed content at edge locations. It delivers the cached content to clients from the edge location that has the lowest latency for the clients." },
+            { question: "Which statement describes an efficient way to deliver on-demand video content?", answer: "Use Amazon S3 to store the content. Then use Amazon CloudFront to deliver the content." },
+            { question: "How does Amazon CloudFront play a role in protecting against DDoS attacks?", answer: "It routes traffic through edge locations to reduce the load on individual systems." },
+            { question: "How can an application use Amazon ElastiCache to improve database read performance? (Select TWO)", answer: "1. Read from the database first, and write the most frequently read data to ElastiCache. 2. Read data from ElastiCache first, and write to ElastiCache when a cache miss occurs." },
+            { question: "Which type of caching strategy should be used when there's data that must be updated in real time?", answer: "Write-through." },
+            
+            // --- Module: Decoupling (SQS, SNS, MQ) ---
+            { question: "What statement describes the difference between tightly and loosely coupled architectures?", answer: "The number of dependencies between components determines the level of coupling. A tightly coupled architecture has more dependencies between components than a loosely coupled architecture." },
+            { question: "Which statements describe Amazon SQS? (Select THREE)", answer: "1. Requires a consumer to poll the queue for messages. 2. Supports standard queues and FIFO queues. 3. Enables you to decouple and scale microservices, distributed systems, and serverless applications." },
+            { question: "Which statements are true when using an Amazon SQS Standard queue? (Select TWO)", answer: "1. Messages can be delivered more than once. 2. A message might not be processed in the order that it was sent." },
+            { question: "What is Amazon SNS?", answer: "A fully managed messaging service for both system-to-system and application-to-person communication where subscribers can receive messages on a publish/subscribe basis." },
+            { question: "What are some use cases for Amazon SNS? (Select THREE)", answer: "1. Send a text message to systems operators when unusual activity has been detected. 2. Send a push notification to mobile applications when a new software update is available. 3. Notify multiple systems that user input is ready for processing." },
+            { question: "What are some features of Amazon SNS? (Select TWO)", answer: "1. Guaranteed message delivery even when an endpoint isn't accessible. 2. Message delivery to an Amazon SQS queue." },
+            { question: "What is Amazon MQ?", answer: "Message broker service." },
+            { question: "What is a common use case for Amazon MQ?", answer: "Leverage an existing on-premises application that uses Apache ActiveMQ to communicate between microservices." }
+        ];
+
+        // --- GET HTML ELEMENTS ---
+        const flashcard = document.getElementById('flashcard');
+        const questionEl = document.getElementById('question');
+        const answerEl = document.getElementById('answer');
+        const timerEl = document.getElementById('timer');
+
+        let currentCardIndex = -1; // Keep track of the current card to avoid repeats
+
+        // --- CORE FUNCTIONS ---
         
-        <section id="about">
-            <div class="container">
-                <h2>About Me</h2>
-                <div class="about-content">
-                    <!-- EDIT THIS: Replace with a URL to your professional photo -->
-                    <img src="https://i.imgur.com/fA4tYj2.jpeg" alt="Shubham Kumar Bind" class="about-image">
-                    <div class="about-text">
-                        <h3>Passionate Mobile Craftsman</h3>
-                        <p>
-                            Hello! I'm Shubham, a software developer with a deep passion for the Android ecosystem. My goal is to bridge the gap between user needs and technical implementation by building applications that are not only functional and robust but also a delight to use.
-                        </p>
-                        <p>
-                           My expertise lies in <strong>Kotlin</strong> and the modern Android development toolkit. I leverage <strong>Jetpack Compose</strong> for creating beautiful, reactive UIs, <strong>Coroutines</strong> for efficient asynchronous operations, and clean architectural patterns like <strong>MVVM</strong> to build scalable and maintainable codebases. I'm a firm believer in continuous learning and am always excited to explore the next evolution in mobile technology.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        // Function to display a new, random flashcard
+        function displayNewCard() {
+            // Un-flip the card if it's flipped
+            flashcard.classList.remove('is-flipped');
 
-        <section id="skills">
-            <div class="container">
-                <h2>My Toolkit</h2>
-                <div class="skills-grid">
-                    <div class="card skill-card"> <i class="fa-brands fa-kotlin"></i> <h4>Kotlin</h4> </div>
-                    <div class="card skill-card"> <i class="fa-brands fa-android"></i> <h4>Android SDK</h4> </div>
-                    <div class="card skill-card"> <i class="fa-solid fa-palette"></i> <h4>Jetpack Compose</h4> </div>
-                    <div class="card skill-card"> <i class="fa-brands fa-java"></i> <h4>Java</h4> </div>
-                    <div class="card skill-card"> <i class="fa-solid fa-layer-group"></i> <h4>MVVM Architecture</h4> </div>
-                    <div class="card skill-card"> <i class="fa-solid fa-database"></i> <h4>Room & SQLite</h4> </div>
-                    <div class="card skill-card"> <i class="fa-solid fa-bolt"></i> <h4>Coroutines</h4> </div>
-                    <div class="card skill-card"> <i class="fa-solid fa-network-wired"></i> <h4>Retrofit & API</h4> </div>
-                </div>
-            </div>
-        </section>
+            // Find a new random index that is different from the current one
+            let randomIndex;
+            if (flashcards.length > 1) {
+                do {
+                    randomIndex = Math.floor(Math.random() * flashcards.length);
+                } while (randomIndex === currentCardIndex);
+            } else {
+                randomIndex = 0;
+            }
+            
+            currentCardIndex = randomIndex;
+            
+            const card = flashcards[currentCardIndex];
+            
+            // Use a short timeout to allow the card to flip back before changing text
+            setTimeout(() => {
+                questionEl.innerText = card.question;
+                answerEl.innerHTML = card.answer; // Using innerHTML to render line breaks if any
+            }, 250); // 250ms = 0.25s
+        }
 
-        <section id="projects">
-            <div class="container">
-                <h2>Featured Work</h2>
-                <div class="projects-grid">
-                    
-                    <!-- PROJECT 1: EDIT THIS SAMPLE -->
-                    <div class="card project-card">
-                        <img src="https://images.unsplash.com/photo-1587424972122-265181b34372?q=80&w=1974&auto=format&fit=crop" alt="Note Taking App Screenshot">
-                        <div class="project-content">
-                            <h3>QuickJot - Minimalist Notes</h3>
-                            <p>An offline-first note-taking application designed for speed and simplicity. Built with a 100% Kotlin codebase and a modern UI using Jetpack Compose, it uses the Room database for robust local storage.</p>
-                            <div class="project-tags">
-                                <span>Kotlin</span> <span>Jetpack Compose</span> <span>Room DB</span> <span>MVVM</span>
-                            </div>
-                            <div class="project-links">
-                                <!-- EDIT these links -->
-                                <a href="https://github.com/your-username/quickjot" target="_blank" class="btn btn-outlined">GitHub</a>
-                                <a href="#" target="_blank" class="btn btn-filled">Play Store</a>
-                            </div>
-                        </div>
-                    </div>
+        // --- TIMER LOGIC ---
+        
+        const newCardIntervalMinutes = 15;
+        const newCardIntervalSeconds = newCardIntervalMinutes * 60;
+        
+        let timeLeft = newCardIntervalSeconds;
 
-                    <!-- PROJECT 2: EDIT THIS SAMPLE -->
-                    <div class="card project-card">
-                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop" alt="News App Screenshot">
-                        <div class="project-content">
-                            <h3>NewsFlow - Curated Headlines</h3>
-                            <p>A news aggregator app that fetches and displays articles from a REST API. It features a clean, dynamic feed, topic filtering, and leverages Retrofit for networking and Coroutines for smooth background data fetching.</p>
-                            <div class="project-tags">
-                                <span>Kotlin</span> <span>Retrofit</span> <span>Coroutines</span> <span>XML Views</span>
-                            </div>
-                            <div class="project-links">
-                                <!-- EDIT this link -->
-                                <a href="https://github.com/your-username/newsflow" target="_blank" class="btn btn-outlined">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
+        function updateTimer() {
+            timeLeft--;
 
-                    <!-- PROJECT 3: EDIT THIS SAMPLE -->
-                    <div class="card project-card">
-                        <img src="https://images.unsplash.com/photo-1554224155-8d04421cd6c3?q=80&w=2070&auto=format&fit=crop" alt="Expense Tracker App Screenshot">
-                        <div class="project-content">
-                            <h3>SpendWise - Expense Tracker</h3>
-                            <p>A finance tracking app with cloud synchronization using Firebase. Users can log expenses, view spending habits with dynamic charts (using MPAndroidChart), and set budgets. Includes Google Sign-In for authentication.</p>
-                            <div class="project-tags">
-                                <span>Kotlin</span> <span>Firebase</span> <span>Jetpack Compose</span> <span>MPAndroidChart</span>
-                            </div>
-                            <div class="project-links">
-                                <!-- EDIT this link -->
-                                <a href="https://github.com/your-username/spendwise" target="_blank" class="btn btn-outlined">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+            if (timeLeft < 0) {
+                // Time is up! Display a new card and reset the timer.
+                displayNewCard();
+                timeLeft = newCardIntervalSeconds;
+            }
 
-    <footer>
-        <div class="container">
-            <div class="social-links">
-                <!-- EDIT THESE LINKS with your actual profile URLs -->
-                <a href="https://github.com/your-username" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                <a href="https://linkedin.com/in/your-profile" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://twitter.com/your-handle" target="_blank" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
-            </div>
-            <!-- EDIT YOUR NAME AND YEAR -->
-            <p>© 2024 Shubham Kumar Bind. All Rights Reserved.</p>
-        </div>
-    </footer>
+            const minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
 
-<script>
-    const themeToggle = document.getElementById('theme-toggle');
-    const htmlEl = document.documentElement;
-    function setTheme(theme) {
-        htmlEl.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-    }
-    themeToggle.addEventListener('click', () => {
-        const newTheme = htmlEl.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-        setTheme(newTheme);
-    });
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (savedTheme) {
-        setTheme(savedTheme);
-    } else {
-        setTheme(prefersDark ? 'dark' : 'light');
-    }
-</script>
+            // Pad the seconds with a leading zero if it's less than 10
+            seconds = seconds < 10 ? '0' + seconds : seconds;
 
+            timerEl.innerText = `${minutes}:${seconds}`;
+        }
+
+
+        // --- EVENT LISTENERS AND INITIALIZATION ---
+
+        // Add click listener to flip the card
+        flashcard.addEventListener('click', () => {
+            flashcard.classList.toggle('is-flipped');
+        });
+        
+        // Initial setup
+        displayNewCard(); // Show the first card immediately
+        setInterval(updateTimer, 1000); // Update the countdown timer every second
+
+    </script>
 </body>
 </html>
