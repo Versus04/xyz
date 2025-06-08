@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- data-theme will be set by JS -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- EDIT THE TITLE & META DESCRIPTION BELOW -->
+    <title>Shubham Kumar Bind | Android Developer</title>
+    <meta name="description" content="The portfolio of Shubham Kumar Bind, a skilled Android Developer specializing in creating modern, user-centric mobile applications with Kotlin and Jetpack Compose.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /*
+        ========================================
+        MATERIAL 3 INSPIRED THEME - FINAL VERSION
+        ========================================
+        */
+
+        /* 1. COLOR PALETTES (Tonal Colors) */
+        :root {
+            /* Shared values */
+            --border-radius-small: 8px;
+            --border-radius-medium: 12px;
+            --border-radius-large: 16px;
+            --border-radius-full: 999px;
+            --transition-speed: 0.3s;
+        }
+
+        /* Light Theme */
+        html[data-theme='light'] {
+            --primary: #00668B;
+            --on-primary: #FFFFFF;
+            --primary-container: #C3E8FF;
+            --on-primary-container: #001E2C;
+            --secondary: #4E616D;
+            --on-secondary: #FFFFFF;
+            --secondary-container: #D1E5F4;
+            --on-secondary-container: #091E28;
+            --surface: #F8FDFF;
+            --on-surface: #191C1E;
+            --surface-variant: #DDE3EA;
+            --on-surface-variant: #41484D;
+            --outline: #71787E;
+            --background: #F8FDFF;
+            --on-background: #191C1E;
+            --elevation-1: 0 1px 2px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.1);
+            --elevation-2: 0 2px 4px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Dark Theme */
+        html[data-theme='dark'] {
+            --primary: #79D1FF;
+            --on-primary: #00354A;
+            --primary-container: #004D69;
+            --on-primary-container: #C3E8FF;
+            --secondary: #B5C9D7;
+            --on-secondary: #20333E;
+            --secondary-container: #364955;
+            --on-secondary-container: #D1E5F4;
+            --surface: #101416;
+            --on-surface: #E0E3E6;
+            --surface-variant: #41484D;
+            --on-surface-variant: #C1C7CE;
+            --outline: #8B9298;
+            --background: #191C1E;
+            --on-background: #E0E3E6;
+            --elevation-1: 0 1px 2px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.3);
+            --elevation-2: 0 2px 4px rgba(0,0,0,0.3), 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        /* 2. BASE STYLES & TYPOGRAPHY */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--on-background);
+            line-height: 1.6;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+        h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; color: var(--on-surface); font-weight: 700; }
+        h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); letter-spacing: -0.5px; }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 4rem; color: var(--primary); }
+        h3 { font-size: 1.25rem; color: var(--on-surface); }
+        h4 { font-size: 1.1rem; color: var(--on-surface-variant); font-weight: 500;}
+        a { color: var(--primary); text-decoration: none; }
+        .container { max-width: 1100px; margin: auto; padding: 0 2rem; }
+
+        /* 3. COMPONENTS */
+        .navbar {
+            position: fixed; width: 100%; top: 0; left: 0;
+            background-color: color-mix(in srgb, var(--surface) 80%, transparent);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            z-index: 1000; padding: 1rem 0; border-bottom: 1px solid var(--outline);
+            transition: background-color var(--transition-speed);
+        }
+        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+        .navbar .logo { font-size: 1.5rem; font-weight: 700; color: var(--on-surface); }
+        .navbar .logo span { color: var(--primary); }
+        .nav-links { list-style: none; display: flex; align-items: center; gap: 1.5rem; }
+        .nav-links a { color: var(--on-surface-variant); font-weight: 500; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--primary); }
+        .theme-switch {
+            display: flex; align-items: center; background: var(--surface-variant);
+            border-radius: var(--border-radius-full); padding: 4px; cursor: pointer;
+        }
+        .theme-switch .icon { padding: 4px; color: var(--on-surface-variant); }
+        .theme-switch .switch-handle {
+            width: 24px; height: 24px; background: var(--primary);
+            border-radius: 50%; transition: transform var(--transition-speed) ease;
+        }
+        html[data-theme='dark'] .theme-switch .switch-handle { transform: translateX(32px); }
+
+        #hero {
+            min-height: 90vh; display: flex; align-items: center;
+            text-align: center; padding-top: 80px;
+        }
+        #hero .subtitle {
+            font-size: 1.25rem; color: var(--on-surface-variant);
+            margin: 1rem 0 2rem 0; max-width: 600px; margin-left: auto; margin-right: auto;
+        }
+        .btn {
+            display: inline-block; font-family: 'Poppins', sans-serif; font-weight: 500;
+            font-size: 1rem; padding: 12px 24px; border-radius: var(--border-radius-full);
+            border: 1px solid transparent; cursor: pointer; transition: all var(--transition-speed) ease;
+        }
+        .btn-filled { background-color: var(--primary); color: var(--on-primary); }
+        .btn-filled:hover { box-shadow: var(--elevation-1); filter: brightness(1.1); }
+        .btn-outlined { background-color: transparent; color: var(--primary); border-color: var(--outline); }
+        .btn-outlined:hover { background-color: color-mix(in srgb, var(--primary) 8%, transparent); }
+        
+        .fab {
+            position: fixed; bottom: 2rem; right: 2rem; width: 56px; height: 56px;
+            background-color: var(--primary-container); color: var(--on-primary-container);
+            border-radius: var(--border-radius-large); display: flex; justify-content: center;
+            align-items: center; font-size: 1.5rem; box-shadow: var(--elevation-2);
+            z-index: 999; transition: all var(--transition-speed) ease;
+        }
+        .fab:hover { transform: scale(1.05); box-shadow: 0 4px 8px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.2); }
+
+        section { padding: 5rem 0; }
+        
+        #about .about-content {
+            display: grid; grid-template-columns: 250px 1fr;
+            align-items: center; gap: 3rem;
+        }
+        #about .about-image {
+            width: 250px; height: 250px; border-radius: 50%;
+            object-fit: cover; border: 4px solid var(--outline);
+        }
+
+        .card {
+            background-color: var(--surface); border: 1px solid var(--outline);
+            border-radius: var(--border-radius-medium);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--elevation-1);
+        }
+        
+        #skills .skills-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card { text-align: center; padding: 1.5rem; }
+        .skill-card i { font-size: 3rem; color: var(--primary); margin-bottom: 1rem; }
+        
+        .projects-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        .project-card { display: flex; flex-direction: column; overflow: hidden; }
+        .project-card img {
+            width: 100%; height: 200px; object-fit: cover;
+            border-bottom: 1px solid var(--outline);
+        }
+        .project-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-content p { color: var(--on-surface-variant); margin: 0.5rem 0 1rem 0; flex-grow: 1; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .project-tags span {
+            background-color: var(--secondary-container); color: var(--on-secondary-container);
+            padding: 0.3rem 0.8rem; border-radius: var(--border-radius-small);
+            font-size: 0.8rem; font-weight: 500;
+        }
+        .project-links { margin-top: 1.5rem; display: flex; gap: 1rem;}
+
+        footer { text-align: center; padding: 3rem 0 2rem 0; margin-top: 4rem; border-top: 1px solid var(--outline); }
+        .social-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+        .social-links a { font-size: 1.5rem; color: var(--on-surface-variant); transition: color 0.3s, transform 0.3s; }
+        .social-links a:hover { color: var(--primary); transform: translateY(-3px); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 2rem; }
+            .nav-links { display: none; }
+            #about .about-content { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+            #about .about-image { margin: 0 auto; }
+            .fab { bottom: 1rem; right: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#hero" class="logo">Shubham<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li>
+                    <div class="theme-switch" id="theme-toggle">
+                        <div class="icon"><i class="fa-solid fa-sun"></i></div>
+                        <div class="switch-handle"></div>
+                        <div class="icon"><i class="fa-solid fa-moon"></i></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- EDIT THIS: Replace with your email address -->
+    <a href="mailto:shubham.k.bind@email.com" class="fab" aria-label="Contact me">
+        <i class="fa-solid fa-envelope"></i>
+    </a>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <h1>Shubham Kumar Bind</h1>
+                <p class="subtitle">A dedicated Android Developer crafting modern, user-centric mobile experiences with Kotlin.</p>
+                <a href="#projects" class="btn btn-filled">View My Work</a>
+                <a href="https://github.com/your-username" target="_blank" class="btn btn-outlined" style="margin-left: 1rem;">
+                    <!-- EDIT THIS: Replace with your GitHub username -->
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
+            </div>
+        </section>
+        
+        <section id="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <!-- EDIT THIS: Replace with a URL to your professional photo -->
+                    <img src="https://i.imgur.com/fA4tYj2.jpeg" alt="Shubham Kumar Bind" class="about-image">
+                    <div class="about-text">
+                        <h3>Passionate Mobile Craftsman</h3>
+                        <p>
+                            Hello! I'm Shubham, a software developer with a deep passion for the Android ecosystem. My goal is to bridge the gap between user needs and technical implementation by building applications that are not only functional and robust but also a delight to use.
+                        </p>
+                        <p>
+                           My expertise lies in <strong>Kotlin</strong> and the modern Android development toolkit. I leverage <strong>Jetpack Compose</strong> for creating beautiful, reactive UIs, <strong>Coroutines</strong> for efficient asynchronous operations, and clean architectural patterns like <strong>MVVM</strong> to build scalable and maintainable codebases. I'm a firm believer in continuous learning and am always excited to explore the next evolution in mobile technology.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h2>My Toolkit</h2>
+                <div class="skills-grid">
+                    <div class="card skill-card"> <i class="fa-brands fa-kotlin"></i> <h4>Kotlin</h4> </div>
+                    <div class="card skill-card"> <i class="fa-brands fa-android"></i> <h4>Android SDK</h4> </div>
+                    <div class="card skill-card"> <i class="fa-solid fa-palette"></i> <h4>Jetpack Compose</h4> </div>
+                    <div class="card skill-card"> <i class="fa-brands fa-java"></i> <h4>Java</h4> </div>
+                    <div class="card skill-card"> <i class="fa-solid fa-layer-group"></i> <h4>MVVM Architecture</h4> </div>
+                    <div class="card skill-card"> <i class="fa-solid fa-database"></i> <h4>Room & SQLite</h4> </div>
+                    <div class="card skill-card"> <i class="fa-solid fa-bolt"></i> <h4>Coroutines</h4> </div>
+                    <div class="card skill-card"> <i class="fa-solid fa-network-wired"></i> <h4>Retrofit & API</h4> </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2>Featured Work</h2>
+                <div class="projects-grid">
+                    
+                    <!-- PROJECT 1: EDIT THIS SAMPLE -->
+                    <div class="card project-card">
+                        <img src="https://images.unsplash.com/photo-1587424972122-265181b34372?q=80&w=1974&auto=format&fit=crop" alt="Note Taking App Screenshot">
+                        <div class="project-content">
+                            <h3>QuickJot - Minimalist Notes</h3>
+                            <p>An offline-first note-taking application designed for speed and simplicity. Built with a 100% Kotlin codebase and a modern UI using Jetpack Compose, it uses the Room database for robust local storage.</p>
+                            <div class="project-tags">
+                                <span>Kotlin</span> <span>Jetpack Compose</span> <span>Room DB</span> <span>MVVM</span>
+                            </div>
+                            <div class="project-links">
+                                <!-- EDIT these links -->
+                                <a href="https://github.com/your-username/quickjot" target="_blank" class="btn btn-outlined">GitHub</a>
+                                <a href="#" target="_blank" class="btn btn-filled">Play Store</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 2: EDIT THIS SAMPLE -->
+                    <div class="card project-card">
+                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop" alt="News App Screenshot">
+                        <div class="project-content">
+                            <h3>NewsFlow - Curated Headlines</h3>
+                            <p>A news aggregator app that fetches and displays articles from a REST API. It features a clean, dynamic feed, topic filtering, and leverages Retrofit for networking and Coroutines for smooth background data fetching.</p>
+                            <div class="project-tags">
+                                <span>Kotlin</span> <span>Retrofit</span> <span>Coroutines</span> <span>XML Views</span>
+                            </div>
+                            <div class="project-links">
+                                <!-- EDIT this link -->
+                                <a href="https://github.com/your-username/newsflow" target="_blank" class="btn btn-outlined">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 3: EDIT THIS SAMPLE -->
+                    <div class="card project-card">
+                        <img src="https://images.unsplash.com/photo-1554224155-8d04421cd6c3?q=80&w=2070&auto=format&fit=crop" alt="Expense Tracker App Screenshot">
+                        <div class="project-content">
+                            <h3>SpendWise - Expense Tracker</h3>
+                            <p>A finance tracking app with cloud synchronization using Firebase. Users can log expenses, view spending habits with dynamic charts (using MPAndroidChart), and set budgets. Includes Google Sign-In for authentication.</p>
+                            <div class="project-tags">
+                                <span>Kotlin</span> <span>Firebase</span> <span>Jetpack Compose</span> <span>MPAndroidChart</span>
+                            </div>
+                            <div class="project-links">
+                                <!-- EDIT this link -->
+                                <a href="https://github.com/your-username/spendwise" target="_blank" class="btn btn-outlined">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <!-- EDIT THESE LINKS with your actual profile URLs -->
+                <a href="https://github.com/your-username" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com/in/your-profile" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://twitter.com/your-handle" target="_blank" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+            <!-- EDIT YOUR NAME AND YEAR -->
+            <p>© 2024 Shubham Kumar Bind. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+    function setTheme(theme) {
+        htmlEl.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    }
+    themeToggle.addEventListener('click', () => {
+        const newTheme = htmlEl.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        setTheme(newTheme);
+    });
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else {
+        setTheme(prefersDark ? 'dark' : 'light');
+    }
+</script>
+
+</body>
+</html>
